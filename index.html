@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wybory</title>
+   <style>
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label{
+            margin: 3px;
+        }
+        button{
+          border-radius: 6px;
+          margin: 2px;
+          padding: 4px;
+        }
+        table{
+          border-collapse: collapse;
+        }
+        table *{
+          text-align: center;
+          border: 1px solid black;
+        }
+        tr.szary{
+          background-color: lightgray;
+        }
+        tr.zielony{
+          background-color: lightgreen;
+        }
+        tr.czerwony{
+          background-color: lightcoral;
+        }
+        .lista{
+            width: 50%;  
+        }
+        h2{
+          text-align: center;
+        }
+        footer{
+          text-align: center;
+          margin: 10px;
+        }
+        .hidden{
+          display: none;
+        }
+          </style>
+  </head>
+  <body>
+    <!-- div -->
+    <header>
+      <h1>Kalkulator wyborczy</h1>
+    </header>
+    <div id="formularz">
+      <main>
+        <form action="#">
+          <label for="nazwa">
+            Nazwa ugrupowania:
+            <input type="text" id="nazwa"/>
+          </label>
+          <label for="koalicja">
+            Czy jest koalicją:
+            <input type="checkbox" name="koalicja" id="koalicja"/>
+          </label>
+          <label for="ileglos">
+            Ilość głosów:
+            <input type="text" name="ileglos" id="ileglos"/>
+          </label>
+          <div>
+            <label for="butdod">
+              <button id="butdod">Dodaj kolejne ugrupowanie</button>
+            </label>
+            <label for="butproc">
+              <button id="butproc">Sprawdź wynik procentowy</button>
+            </label>
+          </div>
+        </main>
+      </form>
+    </div>
+      <!-- dodane grupy-->
+      <p>
+        <ol class="lista ">
+          <li>
+            <b>PKL</b> jest koalicją, ilość głosów: <b> 12543</b>
+          </li>
+          <li>
+            <b>KJN</b> nie jest koalicją, ilość głosów:<b> 1254</b>
+          </li>
+          <li>
+            <b>GBV</b> jest koalicją, ilość głosów: <b>2354</b>
+          </li>
+          <li>
+            <b>DCV</b> nie jest koalicją, ilość głosów: <b>4523</b>
+          </li>
+          <li>
+            <b>JHGU</b> jest koalicją, ilość głosów: <b>235</b>
+          </li>
+          <li>
+            <b>MCE</b> nie jest koalicją, ilość głosów: <b>3562</b>
+          </li>
+          <li>
+            <b>TRE</b> jest koalicją, ilość głosów: <b>254</b>
+          </li>
+        </ol>
+      </p> 
+        <!-- schowana tabelka -->
+      <div id="tabela" class="hidden">
+        <h2>Wyniki wyborów</h2>
+        <table>
+          <tr class="szary">
+            <th>Lp</th>
+            <th>Nazwa ugrupowania</th>
+            <th>Próg wyborczy (%)</th>
+            <th>Ilość głosów</th>
+            <th>Wynik procentowy</th>
+          </tr>
+          <tr class="zielony">
+            <td>1</td>
+            <td>PKL</td>
+            <td>8</td>
+            <td>12543</td>
+            <td>50.73</td>
+          <tr class="zielony">
+            <td>2</td>
+            <td>DCV</td>
+            <td>5</td>
+            <td>4523</td>
+            <td>18.29</td>
+          <tr class="zielony">
+            <td>3</td>
+            <td>MCE</td>
+            <td>5</td>
+            <td>3562</td>
+            <td>14.41</td>
+          <tr class="zielony">
+            <td>4</td>
+            <td>GBV</td>
+            <td>8</td>
+            <td>2354</td>
+            <td>9.52</td>
+          <tr class="zielony">
+            <td>5</td>
+            <td>KJN</td>
+            <td>5</td>
+            <td>1254</td>
+            <td>5.07</td>
+          </tr>
+          <tr class="czerwony">
+            <td>6</td>
+            <td>TRE</td>
+            <td>5</td>
+            <td>254</td>
+            <td>1.03</td>
+          </tr>
+          <tr class="czerwony">
+            <td>7</td>
+            <td>JHGU</td>
+            <td>8</td>
+            <td>235</td>
+            <td>0.95</td>
+          </tr>
+        </table>
+      </div>
+    <footer>&copy;Emilia Domiszewska</footer>
+    
+    
+    <script>
+      const tabela = document.querySelector(`#tabela`)
+      const form = document.querySelector(`#formularz`)
+      const lista = document.querySelector(`.lista`)
+      const butdod = document.querySelector(`#butdod`)
+      const butproc = document.querySelector(`#butproc`)
+      butproc.addEventListener('click', function (evt) {
+          evt.preventDefault()
+          tabela.classList.remove("hidden")
+          lista.classList.add("hidden")
+          form.classList.add("hidden")
+        }
+      )
+
+
+    </script>
+  </body>
+</html>
